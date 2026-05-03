@@ -1,19 +1,45 @@
-# 🎈 Blank app template
+# 이차함수 멀티페이지 학습 앱
 
-A simple Streamlit app template for you to modify!
+이 리포지토리는 고등학생을 위한 이차함수 학습용 Streamlit 앱 프로젝트 예시입니다.
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://blank-app-template.streamlit.app/)
+## 프로젝트 구조
 
-### How to run it on your own machine
+- `main.py` - 앱 첫 화면 및 소개 페이지
+- `pages/`
+  - `1_기본_형태.py`
+  - `2_최고차항의_계수.py`
+  - `3_y축_평행이동.py`
+  - `4_x축_평행이동.py`
+  - `5_표준형.py`
+  - `6_일반형.py`
+  - `7_개형_분석.py`
+- `requirements.txt` - 필요한 패키지 목록
 
-1. Install the requirements
+## 앱 특징
 
-   ```
-   $ pip install -r requirements.txt
-   ```
+- Streamlit 네이티브 멀티페이지 시스템 사용
+- 각 주제별로 별도 페이지 구현
+- `matplotlib`로 그래프 그리기
+- 슬라이더로 매개변수 조절
+- `st.latex`로 수식 표현
+- 꼭짓점, y절편, 축 등 주요 점 강조
+- x 범위는 -10부터 10까지
 
-2. Run the app
+## 페이지 설명
 
-   ```
-   $ streamlit run streamlit_app.py
-   ```
+1. 기본 형태: `f(x)=x^2`
+2. 최고차항의 계수: `f(x)=ax^2` (a 조절)
+3. y축 평행이동: `f(x)=x^2+c` (c 조절)
+4. x축 평행이동: `f(x)=(x-p)^2` (p 조절)
+5. 표준형: `f(x)=a(x-p)^2+c` (a, p, c 조절)
+6. 일반형: `f(x)=ax^2+bx+c` (a, b, c 조절)
+7. 개형 분석: 계수 역할 설명, 꼭짓점과 y절편 표시
+
+## 실행 방법
+
+```bash
+pip install -r requirements.txt
+streamlit run main.py
+```
+
+앱 실행 후 왼쪽 상단의 페이지 메뉴에서 학습 주제를 선택하면 됩니다.
