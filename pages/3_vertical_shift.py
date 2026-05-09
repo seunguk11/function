@@ -14,15 +14,16 @@ q = st.slider("q값", -10, 10, 0, step=1)
 st.latex(rf"y = {a:g}x^2 + {q:g}")
 
 x = np.linspace(-10, 10, 401)
-y = a * x ** 2 + q
+y_original = a * x ** 2
+y_shifted = a * x ** 2 + q
 
-fig, ax = plt.subplots(figsize=(7, 4))
-ax.plot(x, y, color="#009e73", linewidth=2)
+fig, ax = plt.subplots(figsize=(6, 6))
+ax.plot(x, y_original, color="#009e73", linewidth=2, label=f"y = {a:g}x²")
+ax.plot(x, y_shifted, color="#d55e00", linewidth=2, label=f"y = {a:g}x² + {q:g}")
 ax.axhline(0, color="#999999", linewidth=0.8)
 ax.axvline(0, color="#999999", linewidth=0.8)
 ax.scatter([0], [q], color="red", zorder=5)
 ax.annotate("꼭짓점", xy=(0, q), xytext=(2, max(min(q + 3, 9), -6)), arrowprops=dict(arrowstyle="->", color="red"))
-ax.scatter([0], [q], color="orange", zorder=6)
 if a > 0 and q <= 0:
     roots = np.sqrt(-q / a)
     if roots <= 10:
@@ -37,9 +38,25 @@ ax.set_xlim(-10, 10)
 ax.set_ylim(-10, 10)
 ax.set_xlabel("x")
 ax.set_ylabel("y")
-ax.grid(False)
+ax.set_xticks(range(-10, 11))
+ax.set_yticks(range(-10, 11))
+ax.grid(True, which='both', color='lightgray', linestyle='-', linewidth=0.5)
+ax.legend()
 
-st.pyplot(fig)
+col1, col2 = st.columns([1, 1])
 
-st.write("- 꼭짓점은 (0, q)이고, y절편도 q입니다.")
-st.write("- q가 커지면 그래프가 위로, 작아지면 아래로 이동합니다.")
+with col1:
+    st.pyplot(fig)
+
+with col2:
+    st.markdown(
+        f"""
+        <div style='display:flex; flex-direction:column; justify-content:center; min-height:480px;'>
+            <p style='font-size:1.15rem; margin:0.5rem 0;'>- 꼭짓점 좌표: (0, {q:g})</p>
+            <p style='font-size:1.15rem; margin:0.5rem 0;'>- 축의 방정식: x = 0 (대칭축)</p>
+            <p style='font-size:1.15rem; margin:0.5rem 0;'>- x축으로 이동: 0</p>
+            <p style='font-size:1.15rem; margin:0.5rem 0;'>- y축으로 이동: {q:g}</p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
