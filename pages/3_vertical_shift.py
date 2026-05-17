@@ -5,7 +5,7 @@ from font_utils import configure_matplotlib_font
 
 configure_matplotlib_font()
 
-st.title("y축 평행이동 : y=ax+q")
+st.title("y축 평행이동 : y=ax^2+q")
 st.write("a와 q값을 바꾸면 그래프가 위아래로 평행 이동합니다.")
 
 a_values = [i * 0.5 for i in range(-10, 0)] + [i * 0.5 for i in range(1, 11)]

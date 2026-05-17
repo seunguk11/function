@@ -5,7 +5,7 @@ from font_utils import configure_matplotlib_font
 
 configure_matplotlib_font()
 
-st.title("x축 평행이동 : y=a(x-p)")
+st.title("x축 평행이동 : y=a(x-p)^2")
 st.write("a와 p값을 바꾸면 그래프가 좌우로 평행 이동합니다.")
 
 a_values = [i * 0.5 for i in range(-10, 0)] + [i * 0.5 for i in range(1, 11)]
